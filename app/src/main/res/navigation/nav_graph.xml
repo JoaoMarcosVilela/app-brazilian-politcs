@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/telaInicial"
-        android:name="com.example.app_brazilian_politcs.TelaInicial"
+        android:name="com.example.app_brazilian_politcs.fragments.TelaInicial"
         android:label="fragment_tela_inicial"
         tools:layout="@layout/fragment_tela_inicial" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/telaPerguntaCadastro"
-        android:name="com.example.app_brazilian_politcs.TelaPerguntaCadastro"
+        android:name="com.example.app_brazilian_politcs.fragments.TelaPerguntaCadastro"
         android:label="fragment_tela_pergunta_cadastro"
         tools:layout="@layout/fragment_tela_pergunta_cadastro" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/telaLogin"
-        android:name="com.example.app_brazilian_politcs.TelaLogin"
+        android:name="com.example.app_brazilian_politcs.fragments.TelaLogin"
         android:label="fragment_tela_login"
         tools:layout="@layout/fragment_tela_login" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/telaCadastro"
-        android:name="com.example.app_brazilian_politcs.TelaCadastro"
+        android:name="com.example.app_brazilian_politcs.fragments.TelaCadastro"
         android:label="fragment_tela_cadastro"
         tools:layout="@layout/fragment_tela_cadastro" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/telaEleitor"
-        android:name="com.example.app_brazilian_politcs.TelaEleitor"
+        android:name="com.example.app_brazilian_politcs.fragments.eleitor.TelaEleitor"
         android:label="fragment_tela_eleitor"
         tools:layout="@layout/fragment_tela_eleitor" >
         <action
@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/telaJornalista"
-        android:name="com.example.app_brazilian_politcs.TelaJornalista"
+        android:name="com.example.app_brazilian_politcs.fragments.jornalista.TelaJornalista"
         android:label="fragment_tela_jornalista"
         tools:layout="@layout/fragment_tela_jornalista" >
         <action
@@ -79,7 +79,7 @@
     </fragment>
     <fragment
         android:id="@+id/telaNoticiasEleitor"
-        android:name="com.example.app_brazilian_politcs.TelaNoticiasEleitor"
+        android:name="com.example.app_brazilian_politcs.fragments.eleitor.TelaNoticiasEleitor"
         android:label="fragment_tela_noticias_eleitor"
         tools:layout="@layout/fragment_tela_noticias_eleitor" >
         <action
@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/telaNoticiasJornalista"
-        android:name="com.example.app_brazilian_politcs.TelaNoticiasJornalista"
+        android:name="com.example.app_brazilian_politcs.fragments.jornalista.TelaNoticiasJornalista"
         android:label="fragment_tela_noticias_jornalista"
         tools:layout="@layout/fragment_tela_noticias_jornalista" >
         <action
@@ -97,17 +97,17 @@
     </fragment>
     <fragment
         android:id="@+id/telaNoticiaCadastro"
-        android:name="com.example.app_brazilian_politcs.TelaNoticiaCadastro"
+        android:name="com.example.app_brazilian_politcs.fragments.jornalista.TelaNoticiaCadastro"
         android:label="fragment_tela_noticia_cadastro"
         tools:layout="@layout/fragment_tela_noticia_cadastro" />
     <fragment
         android:id="@+id/telaNoticiaCompleta"
-        android:name="com.example.app_brazilian_politcs.TelaNoticiaCompleta"
+        android:name="com.example.app_brazilian_politcs.fragments.eleitor.TelaNoticiaCompleta"
         android:label="fragment_tela_noticia_completa"
         tools:layout="@layout/fragment_tela_noticia_completa" />
     <fragment
         android:id="@+id/telaCandidatosEleitor"
-        android:name="com.example.app_brazilian_politcs.TelaCandidatosEleitor"
+        android:name="com.example.app_brazilian_politcs.fragments.eleitor.TelaCandidatosEleitor"
         android:label="fragment_tela_candidatos_eleitor"
         tools:layout="@layout/fragment_tela_candidatos_eleitor" >
         <action
@@ -116,7 +116,7 @@
     </fragment>
     <fragment
         android:id="@+id/telaCandidatosJornalista"
-        android:name="com.example.app_brazilian_politcs.TelaCandidatosJornalista"
+        android:name="com.example.app_brazilian_politcs.fragments.jornalista.TelaCandidatosJornalista"
         android:label="fragment_tela_candidatos_jornalista"
         tools:layout="@layout/fragment_tela_candidatos_jornalista" >
         <action
@@ -125,17 +125,17 @@
     </fragment>
     <fragment
         android:id="@+id/telaCandidatoCadastrar"
-        android:name="com.example.app_brazilian_politcs.TelaCandidatoCadastrar"
+        android:name="com.example.app_brazilian_politcs.fragments.jornalista.TelaCandidatoCadastrar"
         android:label="fragment_tela_candidato_cadastrar"
         tools:layout="@layout/fragment_tela_candidato_cadastrar" />
     <fragment
         android:id="@+id/telaCandidatoEleitor"
-        android:name="com.example.app_brazilian_politcs.TelaCandidatoEleitor"
+        android:name="com.example.app_brazilian_politcs.fragments.eleitor.TelaCandidatoEleitor"
         android:label="fragment_tela_candidato_eleitor"
         tools:layout="@layout/fragment_tela_candidato_eleitor" />
     <fragment
         android:id="@+id/telaPrincipaisDicussoesEleitor"
-        android:name="com.example.app_brazilian_politcs.TelaPrincipaisDicussoesEleitor"
+        android:name="com.example.app_brazilian_politcs.fragments.eleitor.TelaPrincipaisDicussoesEleitor"
         android:label="fragment_tela_principais_dicussoes_eleitor"
         tools:layout="@layout/fragment_tela_principais_dicussoes_eleitor" >
         <action
@@ -144,7 +144,7 @@
     </fragment>
     <fragment
         android:id="@+id/telaPrincipaisDiscussoesJornalista"
-        android:name="com.example.app_brazilian_politcs.TelaPrincipaisDiscussoesJornalista"
+        android:name="com.example.app_brazilian_politcs.fragments.jornalista.TelaPrincipaisDiscussoesJornalista"
         android:label="fragment_tela_principais_discussoes_jornalista"
         tools:layout="@layout/fragment_tela_principais_discussoes_jornalista" >
         <action
@@ -153,12 +153,12 @@
     </fragment>
     <fragment
         android:id="@+id/telaPrincipalDiscussaoEleitor"
-        android:name="com.example.app_brazilian_politcs.TelaPrincipalDiscussaoEleitor"
+        android:name="com.example.app_brazilian_politcs.fragments.eleitor.TelaPrincipalDiscussaoEleitor"
         android:label="fragment_tela_principal_discussao_eleitor"
         tools:layout="@layout/fragment_tela_principal_discussao_eleitor" />
     <fragment
         android:id="@+id/telaPrincipalDiscussaoCadastro"
-        android:name="com.example.app_brazilian_politcs.TelaPrincipalDiscussaoCadastro"
+        android:name="com.example.app_brazilian_politcs.fragments.jornalista.TelaPrincipalDiscussaoCadastro"
         android:label="fragment_tela_principal_discussao_cadastro"
         tools:layout="@layout/fragment_tela_principal_discussao_cadastro" />
 </navigation>
