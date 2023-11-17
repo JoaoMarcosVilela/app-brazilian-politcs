@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/telaInicial">
+
+    <fragment
+        android:id="@+id/telaInicial"
+        android:name="com.example.app_brazilian_politcs.TelaInicial"
+        android:label="fragment_tela_inicial"
+        tools:layout="@layout/fragment_tela_inicial" >
+        <action
+            android:id="@+id/action_telaInicial_to_telaLogin"
+            app:destination="@id/telaLogin" />
+        <action
+            android:id="@+id/action_telaInicial_to_telaPerguntaCadastro"
+            app:destination="@id/telaPerguntaCadastro" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaPerguntaCadastro"
+        android:name="com.example.app_brazilian_politcs.TelaPerguntaCadastro"
+        android:label="fragment_tela_pergunta_cadastro"
+        tools:layout="@layout/fragment_tela_pergunta_cadastro" >
+        <action
+            android:id="@+id/action_telaPerguntaCadastro_to_telaCadastro"
+            app:destination="@id/telaCadastro" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaLogin"
+        android:name="com.example.app_brazilian_politcs.TelaLogin"
+        android:label="fragment_tela_login"
+        tools:layout="@layout/fragment_tela_login" >
+        <action
+            android:id="@+id/action_telaLogin_to_telaEleitor"
+            app:destination="@id/telaEleitor" />
+        <action
+            android:id="@+id/action_telaLogin_to_telaJornalista"
+            app:destination="@id/telaJornalista" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaCadastro"
+        android:name="com.example.app_brazilian_politcs.TelaCadastro"
+        android:label="fragment_tela_cadastro"
+        tools:layout="@layout/fragment_tela_cadastro" >
+        <action
+            android:id="@+id/action_telaCadastro_to_telaLogin"
+            app:destination="@id/telaLogin" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaEleitor"
+        android:name="com.example.app_brazilian_politcs.TelaEleitor"
+        android:label="fragment_tela_eleitor"
+        tools:layout="@layout/fragment_tela_eleitor" >
+        <action
+            android:id="@+id/action_telaEleitor_to_telaNoticiasEleitor"
+            app:destination="@id/telaNoticiasEleitor" />
+        <action
+            android:id="@+id/action_telaEleitor_to_telaCandidatosEleitor"
+            app:destination="@id/telaCandidatosEleitor" />
+        <action
+            android:id="@+id/action_telaEleitor_to_telaPrincipaisDicussoesEleitor"
+            app:destination="@id/telaPrincipaisDicussoesEleitor" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaJornalista"
+        android:name="com.example.app_brazilian_politcs.TelaJornalista"
+        android:label="fragment_tela_jornalista"
+        tools:layout="@layout/fragment_tela_jornalista" >
+        <action
+            android:id="@+id/action_telaJornalista_to_telaNoticiasJornalista"
+            app:destination="@id/telaNoticiasJornalista" />
+        <action
+            android:id="@+id/action_telaJornalista_to_telaCandidatosJornalista"
+            app:destination="@id/telaCandidatosJornalista" />
+        <action
+            android:id="@+id/action_telaJornalista_to_telaPrincipaisDiscussoesJornalista"
+            app:destination="@id/telaPrincipaisDiscussoesJornalista" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaNoticiasEleitor"
+        android:name="com.example.app_brazilian_politcs.TelaNoticiasEleitor"
+        android:label="fragment_tela_noticias_eleitor"
+        tools:layout="@layout/fragment_tela_noticias_eleitor" >
+        <action
+            android:id="@+id/action_telaNoticiasEleitor_to_telaNoticiaCompleta"
+            app:destination="@id/telaNoticiaCompleta" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaNoticiasJornalista"
+        android:name="com.example.app_brazilian_politcs.TelaNoticiasJornalista"
+        android:label="fragment_tela_noticias_jornalista"
+        tools:layout="@layout/fragment_tela_noticias_jornalista" >
+        <action
+            android:id="@+id/action_telaNoticiasJornalista_to_telaNoticiaCadastro"
+            app:destination="@id/telaNoticiaCadastro" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaNoticiaCadastro"
+        android:name="com.example.app_brazilian_politcs.TelaNoticiaCadastro"
+        android:label="fragment_tela_noticia_cadastro"
+        tools:layout="@layout/fragment_tela_noticia_cadastro" />
+    <fragment
+        android:id="@+id/telaNoticiaCompleta"
+        android:name="com.example.app_brazilian_politcs.TelaNoticiaCompleta"
+        android:label="fragment_tela_noticia_completa"
+        tools:layout="@layout/fragment_tela_noticia_completa" />
+    <fragment
+        android:id="@+id/telaCandidatosEleitor"
+        android:name="com.example.app_brazilian_politcs.TelaCandidatosEleitor"
+        android:label="fragment_tela_candidatos_eleitor"
+        tools:layout="@layout/fragment_tela_candidatos_eleitor" >
+        <action
+            android:id="@+id/action_telaCandidatosEleitor_to_telaCandidatoEleitor"
+            app:destination="@id/telaCandidatoEleitor" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaCandidatosJornalista"
+        android:name="com.example.app_brazilian_politcs.TelaCandidatosJornalista"
+        android:label="fragment_tela_candidatos_jornalista"
+        tools:layout="@layout/fragment_tela_candidatos_jornalista" >
+        <action
+            android:id="@+id/action_telaCandidatosJornalista_to_telaCandidatoCadastrar"
+            app:destination="@id/telaCandidatoCadastrar" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaCandidatoCadastrar"
+        android:name="com.example.app_brazilian_politcs.TelaCandidatoCadastrar"
+        android:label="fragment_tela_candidato_cadastrar"
+        tools:layout="@layout/fragment_tela_candidato_cadastrar" />
+    <fragment
+        android:id="@+id/telaCandidatoEleitor"
+        android:name="com.example.app_brazilian_politcs.TelaCandidatoEleitor"
+        android:label="fragment_tela_candidato_eleitor"
+        tools:layout="@layout/fragment_tela_candidato_eleitor" />
+    <fragment
+        android:id="@+id/telaPrincipaisDicussoesEleitor"
+        android:name="com.example.app_brazilian_politcs.TelaPrincipaisDicussoesEleitor"
+        android:label="fragment_tela_principais_dicussoes_eleitor"
+        tools:layout="@layout/fragment_tela_principais_dicussoes_eleitor" >
+        <action
+            android:id="@+id/action_telaPrincipaisDicussoesEleitor_to_telaPrincipalDiscussaoEleitor"
+            app:destination="@id/telaPrincipalDiscussaoEleitor" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaPrincipaisDiscussoesJornalista"
+        android:name="com.example.app_brazilian_politcs.TelaPrincipaisDiscussoesJornalista"
+        android:label="fragment_tela_principais_discussoes_jornalista"
+        tools:layout="@layout/fragment_tela_principais_discussoes_jornalista" >
+        <action
+            android:id="@+id/action_telaPrincipaisDiscussoesJornalista_to_telaPrincipalDiscussaoCadastro"
+            app:destination="@id/telaPrincipalDiscussaoCadastro" />
+    </fragment>
+    <fragment
+        android:id="@+id/telaPrincipalDiscussaoEleitor"
+        android:name="com.example.app_brazilian_politcs.TelaPrincipalDiscussaoEleitor"
+        android:label="fragment_tela_principal_discussao_eleitor"
+        tools:layout="@layout/fragment_tela_principal_discussao_eleitor" />
+    <fragment
+        android:id="@+id/telaPrincipalDiscussaoCadastro"
+        android:name="com.example.app_brazilian_politcs.TelaPrincipalDiscussaoCadastro"
+        android:label="fragment_tela_principal_discussao_cadastro"
+        tools:layout="@layout/fragment_tela_principal_discussao_cadastro" />
+</navigation>

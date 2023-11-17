@@ -6,6 +6,10 @@ android {
     namespace 'com.example.app_brazilian_politcs'
     compileSdk 34
 
+    viewBinding{
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.example.app_brazilian_politcs"
         minSdk 30
@@ -29,6 +33,12 @@ android {
 }
 
 dependencies {
+
+    implementation "androidx.fragment:fragment:1.5.4"
+    def nav_version = "2.5.2"
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.10.0'
