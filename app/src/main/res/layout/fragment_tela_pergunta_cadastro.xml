@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#6BECE4"
+    android:orientation="vertical"
     tools:context=".TelaPerguntaCadastro">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textViewPergunta"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:text="Quem está acessando?"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="34sp" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnEleitor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="90dp"
+        android:fontFamily="@font/holtwood_one_sc"
+        android:text="Eleitor"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/btnJornalista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginRight="90dp"
+        android:fontFamily="@font/holtwood_one_sc"
+        android:text="Jornalista"
+        android:textColor="#000000" />
+</LinearLayout>
