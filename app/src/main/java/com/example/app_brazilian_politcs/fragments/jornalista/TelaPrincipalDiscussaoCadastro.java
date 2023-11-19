@@ -1,4 +1,4 @@
-package com.example.app_brazilian_politcs;
+package com.example.app_brazilian_politcs.fragments.jornalista;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.app_brazilian_politcs.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link TelaPrincipalDiscussaoEleitor#newInstance} factory method to
+ * Use the {@link TelaPrincipalDiscussaoCadastro#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TelaPrincipalDiscussaoEleitor extends Fragment {
+public class TelaPrincipalDiscussaoCadastro extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class TelaPrincipalDiscussaoEleitor extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public TelaPrincipalDiscussaoEleitor() {
+    public TelaPrincipalDiscussaoCadastro() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class TelaPrincipalDiscussaoEleitor extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TelaPrincipalDiscussaoEleitor.
+     * @return A new instance of fragment TelaPrincipalDiscussaoCadastro.
      */
     // TODO: Rename and change types and number of parameters
-    public static TelaPrincipalDiscussaoEleitor newInstance(String param1, String param2) {
-        TelaPrincipalDiscussaoEleitor fragment = new TelaPrincipalDiscussaoEleitor();
+    public static TelaPrincipalDiscussaoCadastro newInstance(String param1, String param2) {
+        TelaPrincipalDiscussaoCadastro fragment = new TelaPrincipalDiscussaoCadastro();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class TelaPrincipalDiscussaoEleitor extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tela_principal_discussao_eleitor, container, false);
+        return inflater.inflate(R.layout.fragment_tela_principal_discussao_cadastro, container, false);
     }
 }
