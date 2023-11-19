@@ -9,33 +9,29 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginEnd="61dp"
-        android:layout_marginBottom="65dp"
+        android:layout_width="278dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="67dp"
         android:fontFamily="sans-serif-black"
-        android:text="BEM-VINDO
-                        AO
-                      EDUCAPOL"
+        android:text="EDUCAPOL"
         android:textAlignment="center"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnLoginTelaInicial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="144dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/holtwood_one_sc"
         android:text="Login"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnCadastrar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -44,23 +40,23 @@
         android:id="@+id/btnCadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="43dp"
         android:fontFamily="@font/holtwood_one_sc"
         android:text="Cadastrar-se"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnLogin" />
+        app:layout_constraintStart_toEndOf="@+id/btnLoginTelaInicial"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="15dp"
+        android:layout_width="297dp"
+        android:layout_height="295dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="57dp"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
