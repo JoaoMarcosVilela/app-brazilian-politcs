@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewHorario" />
 
     <TextView
-        android:id="@+id/textViewUsuario"
+        android:id="@+id/textViewUsuarioEleitor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
@@ -58,7 +58,7 @@
         android:text="Notícias"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsuarioEleitor" />
 
     <Button
         android:id="@+id/btnCandidatosTelaEleitor"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnCandidatosTelaEleitor" />
 
     <TextView
-        android:id="@+id/textViewHora"
+        android:id="@+id/textViewHoraEleitor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="173dp"
@@ -97,5 +97,6 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsuarioEleitor" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,64 +3,59 @@ package com.example.app_brazilian_politcs.fragments.jornalista;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.room.Room;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.app_brazilian_politcs.R;
+import com.example.app_brazilian_politcs.database.Database;
+import com.example.app_brazilian_politcs.databinding.FragmentTelaEleitorBinding;
+import com.example.app_brazilian_politcs.databinding.FragmentTelaJornalistaBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TelaJornalista#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class TelaJornalista extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    FragmentTelaJornalistaBinding binding;
+    Database db;
 
     public TelaJornalista() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TelaJornalista.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TelaJornalista newInstance(String param1, String param2) {
-        TelaJornalista fragment = new TelaJornalista();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tela_jornalista, container, false);
+        binding = FragmentTelaJornalistaBinding.inflate(inflater,container,false);
+
+        db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
+        binding.textViewUsuarioJornalista.setText(getArguments().getString("usuario"));
+        Bundle bundle = new Bundle();
+        bundle.putString("usuario", getArguments().getString("usuario"));
+
+        binding.btnCadastrarNoticiasJornalista.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaJornalista_to_telaNoticiasJornalista,bundle));
+        binding.btnCadastrarCandidatosJornalista.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaJornalista_to_telaCandidatosJornalista));
+        binding.btnCadastrarDiscussoesJornalista.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaJornalista_to_telaPrincipaisDiscussoesJornalista));
+
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            public void run() {
+                Date dataHoraAtual = new Date();
+                String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
+                binding.textViewHoraJornalista.setText(hora);
+                handler.postDelayed(this, 10*100);
+            }
+        });
+
+        return binding.getRoot();
     }
 }

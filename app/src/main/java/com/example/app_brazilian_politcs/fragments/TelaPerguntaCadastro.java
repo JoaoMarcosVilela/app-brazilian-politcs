@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.example.app_brazilian_politcs.R;
 import com.example.app_brazilian_politcs.databinding.FragmentTelaPerguntaCadastroBinding;
-import com.example.app_brazilian_politcs.modelos.Eleitor;
 
 public class TelaPerguntaCadastro extends Fragment {
     FragmentTelaPerguntaCadastroBinding binding;

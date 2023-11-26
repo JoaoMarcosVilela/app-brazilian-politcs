@@ -3,64 +3,57 @@ package com.example.app_brazilian_politcs.fragments.jornalista;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.app_brazilian_politcs.R;
+import com.example.app_brazilian_politcs.database.Database;
+import com.example.app_brazilian_politcs.databinding.FragmentTelaPrincipalDiscussaoCadastroBinding;
+import com.example.app_brazilian_politcs.models.Discussao;
+import com.google.android.material.snackbar.Snackbar;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TelaPrincipalDiscussaoCadastro#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class TelaPrincipalDiscussaoCadastro extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    FragmentTelaPrincipalDiscussaoCadastroBinding binding;
+    Database db;
     public TelaPrincipalDiscussaoCadastro() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TelaPrincipalDiscussaoCadastro.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TelaPrincipalDiscussaoCadastro newInstance(String param1, String param2) {
-        TelaPrincipalDiscussaoCadastro fragment = new TelaPrincipalDiscussaoCadastro();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tela_principal_discussao_cadastro, container, false);
+        binding = FragmentTelaPrincipalDiscussaoCadastroBinding.inflate(inflater,container,false);
+        db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
+
+        binding.btnEnviarDiscussao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String titulo = binding.editTextTituloDiscussao.getText().toString();
+                String discussao = binding.editTextDiscussao.getText().toString();
+
+                if(!titulo.isEmpty() && !discussao.isEmpty()){
+                    db.discussaoDao().insert(new Discussao(titulo,discussao));
+                    Navigation.findNavController(v).navigate(R.id.telaPrincipaisDiscussoesJornalista);
+                }else{
+                    Snackbar.make(v, "Título e Discussão. Obrigatórios", Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null)
+                            .show();
+                }
+            }
+        });
+
+
+        return binding.getRoot();
     }
 }
