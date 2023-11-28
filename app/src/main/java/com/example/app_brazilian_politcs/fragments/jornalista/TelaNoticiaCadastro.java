@@ -46,7 +46,9 @@ public class TelaNoticiaCadastro extends Fragment {
 
                 if(!titulo.isEmpty() && !subtitlo.isEmpty() && !corpoNoticia.isEmpty()){
                     db.noticiaDao().insert(new Noticia(titulo,subtitlo,corpoNoticia, usuario));
-                    Navigation.findNavController(v).navigate(R.id.telaJornalista);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("usuario",usuario);
+                    Navigation.findNavController(v).navigate(R.id.telaJornalista,bundle);
                 }else{
                     Snackbar.make(v, "Título, subtitlo e Reportagem. Obrigatórios", Snackbar.LENGTH_SHORT)
                             .setAction("Action", null)
