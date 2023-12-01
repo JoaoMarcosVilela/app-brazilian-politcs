@@ -36,22 +36,46 @@ public class TelaCandidatoCadastrar extends Fragment {
         binding = FragmentTelaCandidatoCadastrarBinding.inflate(inflater,container,false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
 
-        binding.btnEnivarCandidato.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nome = binding.editTextNomeCandidato.getText().toString();
-                String partido = binding.editTextPartido.getText().toString();
+        if(getArguments() != null){
+            String nome = getArguments().getString("nome");
+            String partido = getArguments().getString("partido");
 
-                if(!nome.isEmpty() && !partido.isEmpty()){
-                    db.candidatoDao().insert(new Candidato(nome,partido));
+            binding.editTextNomeCandidato.setText(nome);
+            binding.editTextPartido.setText(partido);
+
+            binding.btnEnivarCandidato.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String novoNome = binding.editTextNomeCandidato.getText().toString();
+                    String novoPartido = binding.editTextPartido.getText().toString();
+
+                    Candidato candidato = db.candidatoDao().findByNome(nome);
+                    candidato.setNome(novoNome);
+                    candidato.setPartido(novoPartido);
+                    db.candidatoDao().update(candidato);
                     Navigation.findNavController(v).navigate(R.id.telaCandidatosJornalista);
-                }else{
-                    Snackbar.make(v, "Nome e Partido. Obrigatórios", Snackbar.LENGTH_SHORT)
-                            .setAction("Action", null)
-                            .show();
                 }
-            }
-        });
+            });
+        }else{
+            binding.btnEnivarCandidato.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String nome = binding.editTextNomeCandidato.getText().toString();
+                    String partido = binding.editTextPartido.getText().toString();
+
+                    if(!nome.isEmpty() && !partido.isEmpty()){
+                        db.candidatoDao().insert(new Candidato(nome,partido));
+                        Navigation.findNavController(v).navigate(R.id.telaCandidatosJornalista);
+                    }else{
+                        Snackbar.make(v, "Nome e Partido. Obrigatórios", Snackbar.LENGTH_SHORT)
+                                .setAction("Action", null)
+                                .show();
+                    }
+                }
+            });
+        }
+
+
 
         return binding.getRoot();
     }

@@ -9,7 +9,9 @@ import androidx.room.Room;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.example.app_brazilian_politcs.R;
 import com.example.app_brazilian_politcs.database.Database;
@@ -40,16 +42,43 @@ public class TelaPrincipaisDiscussoesJornalista extends Fragment {
         binding = FragmentTelaPrincipaisDiscussoesJornalistaBinding.inflate(inflater,container,false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
 
-        binding.btnCadastrarDiscussoes.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaPrincipaisDiscussoesJornalista_to_telaPrincipalDiscussaoCadastro));
+        binding.btnCadastrarDiscussoes.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaPrincipaisDiscussoesJornalista_to_telaPrincipalDiscussaoCadastro,null));
 
-        List<Discussao> discussoes = db.discussaoDao().getAll();
+        listarDadosDoListView();
+
+        binding.listViewPrincipaisDiscussoes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Discussao discussao = pegarDadosBd().get(position);
+                db.discussaoDao().delete(discussao);
+                Toast.makeText(getContext(), discussao.getTituloDiscussao() + " Excluido", Toast.LENGTH_SHORT).show();
+                listarDadosDoListView();
+                return true;
+            }
+        });
+        binding.listViewPrincipaisDiscussoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Discussao discussao = pegarDadosBd().get(position);
+                Bundle bundle = new Bundle();
+                bundle.putString("tituloDiscussao", discussao.getTituloDiscussao());
+                bundle.putString("discussao", discussao.getDiscussao());
+                Navigation.findNavController(view).navigate(R.id.action_telaPrincipaisDiscussoesJornalista_to_telaPrincipalDiscussaoCadastro, bundle);
+            }
+        });
+
+        return binding.getRoot();
+    }
+    public List<Discussao> pegarDadosBd(){
+        List<Discussao> discussoes;
+        return discussoes = db.discussaoDao().getAll();
+    }
+    public void listarDadosDoListView(){
         ArrayList<String> dados = new ArrayList<>();
-        for(Discussao i: discussoes){
+        for(Discussao i: pegarDadosBd()){
             dados.add(i.toString());
         }
         ArrayAdapter adapter = new ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, dados);
         binding.listViewPrincipaisDiscussoes.setAdapter(adapter);
-
-        return binding.getRoot();
     }
 }

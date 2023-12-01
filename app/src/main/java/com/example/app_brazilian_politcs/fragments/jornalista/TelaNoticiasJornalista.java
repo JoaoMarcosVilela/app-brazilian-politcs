@@ -9,7 +9,9 @@ import androidx.room.Room;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.example.app_brazilian_politcs.R;
 import com.example.app_brazilian_politcs.database.Database;
@@ -40,18 +42,47 @@ public class TelaNoticiasJornalista extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("usuario", getArguments().getString("usuario"));
 
-        List<Noticia> noticias = db.noticiaDao().getAll();
-        ArrayList<String> dados = new ArrayList<>();
+        listarDadosDoListView();
 
-        for(Noticia i: noticias){
-            dados.add(i.toString());
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1,dados);
-        binding.listViewNoticias.setAdapter(adapter);
+        binding.listViewNoticias.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Noticia noticia = pegarDadosNoBd().get(position);
+                db.noticiaDao().delete(noticia);
+                Toast.makeText(getContext(), noticia.getTitulo() + " Excluido", Toast.LENGTH_SHORT).show();
+                listarDadosDoListView();
+                return true;
+            }
+        });
+
+        binding.listViewNoticias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                bundle.putString("posisao", String.valueOf(position));
+                Noticia noticia = pegarDadosNoBd().get(position);
+                bundle.putString("titulo", noticia.getTitulo());
+                bundle.putString("subTitulo", noticia.getSubtitulo());
+                bundle.putString("corpoTexto", noticia.getCorpoTexto());
+                Navigation.findNavController(view).navigate(R.id.telaNoticiaCadastro,bundle);
+            }
+        });
 
 
         binding.btnCadastrarNoticia.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaNoticiasJornalista_to_telaNoticiaCadastro, bundle));
 
         return binding.getRoot();
+    }
+
+    public List<Noticia> pegarDadosNoBd(){
+        List<Noticia> noticia;
+        return noticia = db.noticiaDao().getAll();
+    }
+    public void listarDadosDoListView(){
+        ArrayList<String> dados = new ArrayList<>();
+        for(Noticia i: pegarDadosNoBd()){
+            dados.add(i.toString());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1,dados);
+        binding.listViewNoticias.setAdapter(adapter);
     }
 }

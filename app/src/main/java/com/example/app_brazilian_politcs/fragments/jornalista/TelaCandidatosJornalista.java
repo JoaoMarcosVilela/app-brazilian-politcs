@@ -9,7 +9,9 @@ import androidx.room.Room;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.example.app_brazilian_politcs.R;
 import com.example.app_brazilian_politcs.database.Database;
@@ -38,16 +40,45 @@ public class TelaCandidatosJornalista extends Fragment {
         binding = FragmentTelaCandidatosJornalistaBinding.inflate(inflater,container,false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
 
-        binding.btnCadastrarCandidatos.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaCandidatosJornalista_to_telaCandidatoCadastrar));
+        binding.btnCadastrarCandidatos.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaCandidatosJornalista_to_telaCandidatoCadastrar, null));
+        listarDadosDoListView();
 
-        List<Candidato> candidatos = db.candidatoDao().getAll();
+        binding.listViewCandidatos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Candidato candidato = pegarDadosBd().get(position);
+                db.candidatoDao().delete(candidato);
+                Toast.makeText(getContext(), candidato.getNome() + " Excluido", Toast.LENGTH_SHORT).show();
+                listarDadosDoListView();
+                return true;
+            }
+        });
+
+        binding.listViewCandidatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Candidato candidato = pegarDadosBd().get(position);
+                Bundle bundle = new Bundle();
+                bundle.putString("nome", candidato.getNome());
+                bundle.putString("partido", candidato.getPartido());
+                Navigation.findNavController(view).navigate(R.id.action_telaCandidatosJornalista_to_telaCandidatoCadastrar, bundle);
+            }
+        });
+
+
+        return binding.getRoot();
+    }
+
+    public List<Candidato> pegarDadosBd(){
+        List<Candidato> candidatos;
+        return candidatos = db.candidatoDao().getAll();
+    }
+    public void listarDadosDoListView(){
         ArrayList<String> dados = new ArrayList<>();
-        for(Candidato i: candidatos){
+        for(Candidato i: pegarDadosBd()){
             dados.add(i.toString());
         }
         ArrayAdapter adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, dados);
         binding.listViewCandidatos.setAdapter(adapter);
-
-        return binding.getRoot();
     }
 }

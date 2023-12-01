@@ -36,24 +36,43 @@ public class TelaPrincipalDiscussaoCadastro extends Fragment {
         binding = FragmentTelaPrincipalDiscussaoCadastroBinding.inflate(inflater,container,false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
 
-        binding.btnEnviarDiscussao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String titulo = binding.editTextTituloDiscussao.getText().toString();
-                String discussao = binding.editTextDiscussao.getText().toString();
+        if(getArguments() != null){
+            String tituloDiscussao = getArguments().getString("tituloDiscussao");
+            String discussao = getArguments().getString("discussao");
 
-                if(!titulo.isEmpty() && !discussao.isEmpty()){
-                    db.discussaoDao().insert(new Discussao(titulo,discussao));
+            binding.editTextTituloDiscussao.setText(tituloDiscussao);
+            binding.editTextDiscussao.setText(discussao);
+
+            binding.btnEnviarDiscussao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String novoTituloDiscusao = binding.editTextTituloDiscussao.getText().toString();
+                    String novaDiscussao = binding.editTextDiscussao.getText().toString();
+                    Discussao discussao = db.discussaoDao().findByTitulo(tituloDiscussao);
+                    discussao.setTituloDiscussao(novoTituloDiscusao);
+                    discussao.setDiscussao(novaDiscussao);
+                    db.discussaoDao().update(discussao);
                     Navigation.findNavController(v).navigate(R.id.telaPrincipaisDiscussoesJornalista);
-                }else{
-                    Snackbar.make(v, "Título e Discussão. Obrigatórios", Snackbar.LENGTH_SHORT)
-                            .setAction("Action", null)
-                            .show();
                 }
-            }
-        });
+            });
+        }else{
+            binding.btnEnviarDiscussao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String titulo = binding.editTextTituloDiscussao.getText().toString();
+                    String discussao = binding.editTextDiscussao.getText().toString();
 
-
+                    if(!titulo.isEmpty() && !discussao.isEmpty()){
+                        db.discussaoDao().insert(new Discussao(titulo,discussao));
+                        Navigation.findNavController(v).navigate(R.id.telaPrincipaisDiscussoesJornalista);
+                    }else{
+                        Snackbar.make(v, "Título e Discussão. Obrigatórios", Snackbar.LENGTH_SHORT)
+                                .setAction("Action", null)
+                                .show();
+                    }
+                }
+            });
+        }
         return binding.getRoot();
     }
 }

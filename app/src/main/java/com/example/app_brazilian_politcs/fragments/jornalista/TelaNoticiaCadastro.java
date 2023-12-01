@@ -36,34 +36,56 @@ public class TelaNoticiaCadastro extends Fragment {
         binding = FragmentTelaNoticiaCadastroBinding.inflate(inflater,container, false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
 
-        binding.btnEnviarNoticia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String titulo = binding.editTextTitulo.getText().toString();
-                String subtitlo = binding.editTextSubTitulo.getText().toString();
-                String corpoNoticia = binding.editTextCorpoTexto.getText().toString();
-                String usuario = getArguments().getString("usuario");
+        if(getArguments().getString("posisao") != null) {
 
-                if(!titulo.isEmpty() && !subtitlo.isEmpty() && !corpoNoticia.isEmpty()){
-                    db.noticiaDao().insert(new Noticia(titulo,subtitlo,corpoNoticia, usuario));
+            String titulo = getArguments().getString("titulo");
+            String subtitulo = getArguments().getString("subTitulo");
+            String corpoTexto = getArguments().getString("corpoTexto");
+            String jornalista = getArguments().getString("usuario");
+
+            binding.editTextTitulo.setText(titulo);
+            binding.editTextSubTitulo.setText(subtitulo);
+            binding.editTextCorpoTexto.setText(corpoTexto);
+            binding.btnEnviarNoticia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String novoTitulo = binding.editTextTitulo.getText().toString();
+                    String novoSubTitulo = binding.editTextSubTitulo.getText().toString();
+                    String novoCorpoTexto = binding.editTextCorpoTexto.getText().toString();
+
                     Bundle bundle = new Bundle();
-                    bundle.putString("usuario",usuario);
-                    Navigation.findNavController(v).navigate(R.id.telaJornalista,bundle);
-                }else{
-                    Snackbar.make(v, "Título, subtitlo e Reportagem. Obrigatórios", Snackbar.LENGTH_SHORT)
-                            .setAction("Action", null)
-                            .show();
+                    bundle.putString("usuario", jornalista);
+
+                    Noticia noticia = db.noticiaDao().findByTitulo(titulo);
+                    noticia.setTitulo(novoTitulo);
+                    noticia.setSubtitulo(novoSubTitulo);
+                    noticia.setCorpoTexto(novoCorpoTexto);
+                    db.noticiaDao().update(noticia);
+                    Navigation.findNavController(v).navigate(R.id.telaNoticiasJornalista, bundle);
                 }
-            }
-        });
+            });
+        }else {
+            binding.btnEnviarNoticia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String titulo = binding.editTextTitulo.getText().toString();
+                    String subtitlo = binding.editTextSubTitulo.getText().toString();
+                    String corpoNoticia = binding.editTextCorpoTexto.getText().toString();
+                    String usuario = getArguments().getString("usuario");
 
-
-
-
-
-
-
-
+                    if (!titulo.isEmpty() && !subtitlo.isEmpty() && !corpoNoticia.isEmpty()) {
+                        db.noticiaDao().insert(new Noticia(titulo, subtitlo, corpoNoticia, usuario));
+                        Bundle bundle = new Bundle();
+                        bundle.putString("usuario", usuario);
+                        Navigation.findNavController(v).navigate(R.id.telaJornalista, bundle);
+                    } else {
+                        Snackbar.make(v, "Título, subtitlo e Reportagem. Obrigatórios", Snackbar.LENGTH_SHORT)
+                                .setAction("Action", null)
+                                .show();
+                    }
+                }
+            });
+        }
         return binding.getRoot();
     }
 }
