@@ -43,8 +43,9 @@ public class TelaJornalista extends Fragment {
         bundle.putString("usuario", getArguments().getString("usuario"));
 
         binding.btnCadastrarNoticiasJornalista.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaJornalista_to_telaNoticiasJornalista,bundle));
-        binding.btnCadastrarCandidatosJornalista.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaJornalista_to_telaCandidatosJornalista));
-        binding.btnCadastrarDiscussoesJornalista.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaJornalista_to_telaPrincipaisDiscussoesJornalista));
+        binding.btnCadastrarCandidatosJornalista.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaJornalista_to_telaCandidatosJornalista, bundle));
+        binding.btnCadastrarDiscussoesJornalista.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaJornalista_to_telaPrincipaisDiscussoesJornalista, bundle));
+        binding.btnSairJornalista.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.telaInicial));
 
         final Handler handler = new Handler();
         handler.post(new Runnable() {

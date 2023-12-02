@@ -44,6 +44,8 @@ public class TelaNoticiasJornalista extends Fragment {
 
         listarDadosDoListView();
 
+        binding.toolbarTelaNotciaJornalista.setNavigationOnClickListener(Navigation.createNavigateOnClickListener(R.id.telaJornalista, bundle));
+
         binding.listViewNoticias.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

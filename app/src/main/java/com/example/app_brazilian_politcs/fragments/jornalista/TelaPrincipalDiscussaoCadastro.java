@@ -36,7 +36,7 @@ public class TelaPrincipalDiscussaoCadastro extends Fragment {
         binding = FragmentTelaPrincipalDiscussaoCadastroBinding.inflate(inflater,container,false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
 
-        if(getArguments() != null){
+        if(getArguments().getString("posissao") != null){
             String tituloDiscussao = getArguments().getString("tituloDiscussao");
             String discussao = getArguments().getString("discussao");
 
@@ -52,7 +52,9 @@ public class TelaPrincipalDiscussaoCadastro extends Fragment {
                     discussao.setTituloDiscussao(novoTituloDiscusao);
                     discussao.setDiscussao(novaDiscussao);
                     db.discussaoDao().update(discussao);
-                    Navigation.findNavController(v).navigate(R.id.telaPrincipaisDiscussoesJornalista);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("usuario", getArguments().getString("usuario"));
+                    Navigation.findNavController(v).navigate(R.id.telaPrincipaisDiscussoesJornalista,bundle);
                 }
             });
         }else{
@@ -61,10 +63,12 @@ public class TelaPrincipalDiscussaoCadastro extends Fragment {
                 public void onClick(View v) {
                     String titulo = binding.editTextTituloDiscussao.getText().toString();
                     String discussao = binding.editTextDiscussao.getText().toString();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("usuario",getArguments().getString("usuario"));
 
                     if(!titulo.isEmpty() && !discussao.isEmpty()){
                         db.discussaoDao().insert(new Discussao(titulo,discussao));
-                        Navigation.findNavController(v).navigate(R.id.telaPrincipaisDiscussoesJornalista);
+                        Navigation.findNavController(v).navigate(R.id.telaPrincipaisDiscussoesJornalista, bundle);
                     }else{
                         Snackbar.make(v, "Título e Discussão. Obrigatórios", Snackbar.LENGTH_SHORT)
                                 .setAction("Action", null)

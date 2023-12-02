@@ -68,6 +68,7 @@ public class TelaNoticiaCadastro extends Fragment {
             binding.btnEnviarNoticia.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     String titulo = binding.editTextTitulo.getText().toString();
                     String subtitlo = binding.editTextSubTitulo.getText().toString();
                     String corpoNoticia = binding.editTextCorpoTexto.getText().toString();

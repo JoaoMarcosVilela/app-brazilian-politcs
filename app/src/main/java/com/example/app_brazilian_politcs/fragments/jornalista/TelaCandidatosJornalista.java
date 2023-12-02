@@ -39,9 +39,15 @@ public class TelaCandidatosJornalista extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentTelaCandidatosJornalistaBinding.inflate(inflater,container,false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
+        Bundle bundle = new Bundle();
+        bundle.putString("usuario", getArguments().getString("usuario"));
 
-        binding.btnCadastrarCandidatos.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaCandidatosJornalista_to_telaCandidatoCadastrar, null));
+        binding.btnCadastrarCandidatos.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaCandidatosJornalista_to_telaCandidatoCadastrar, bundle));
         listarDadosDoListView();
+
+
+
+        binding.toolbarTelaCandidatosJornalista.setNavigationOnClickListener(Navigation.createNavigateOnClickListener(R.id.telaJornalista, bundle));
 
         binding.listViewCandidatos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -61,6 +67,8 @@ public class TelaCandidatosJornalista extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("nome", candidato.getNome());
                 bundle.putString("partido", candidato.getPartido());
+                bundle.putString("usuario", getArguments().getString("usuario"));
+                bundle.putString("posissao", String.valueOf(position));
                 Navigation.findNavController(view).navigate(R.id.action_telaCandidatosJornalista_to_telaCandidatoCadastrar, bundle);
             }
         });

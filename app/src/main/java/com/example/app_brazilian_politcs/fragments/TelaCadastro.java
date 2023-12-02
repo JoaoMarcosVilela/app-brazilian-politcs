@@ -37,6 +37,8 @@ public class TelaCadastro extends Fragment {
         binding = FragmentTelaCadastroBinding.inflate(inflater,container,false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
 
+        binding.toolbarTelaCadastro.setNavigationOnClickListener(Navigation.createNavigateOnClickListener(R.id.telaPerguntaCadastro));
+
         binding.btnSalvarCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

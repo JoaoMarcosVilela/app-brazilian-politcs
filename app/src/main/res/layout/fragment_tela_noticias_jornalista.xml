@@ -9,25 +9,32 @@
 
     <ListView
         android:id="@+id/listViewNoticias"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCadastrarNoticia"
+        android:layout_width="0dp"
+        android:layout_height="509dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarTelaNotciaJornalista" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnCadastrarNoticia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="23dp"
+        android:layout_marginTop="7dp"
         android:clickable="true"
         android:src="@drawable/plus"
         app:backgroundTint="#850808"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listViewNoticias"
+        tools:layout_editor_absoluteX="325dp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarTelaNotciaJornalista"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/silver"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listViewNoticias" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,7 +36,7 @@ public class TelaCandidatoCadastrar extends Fragment {
         binding = FragmentTelaCandidatoCadastrarBinding.inflate(inflater,container,false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
 
-        if(getArguments() != null){
+        if(getArguments().getString("posissao") != null){
             String nome = getArguments().getString("nome");
             String partido = getArguments().getString("partido");
 
@@ -53,7 +53,9 @@ public class TelaCandidatoCadastrar extends Fragment {
                     candidato.setNome(novoNome);
                     candidato.setPartido(novoPartido);
                     db.candidatoDao().update(candidato);
-                    Navigation.findNavController(v).navigate(R.id.telaCandidatosJornalista);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("usuario",getArguments().getString("usuario"));
+                    Navigation.findNavController(v).navigate(R.id.telaCandidatosJornalista, bundle);
                 }
             });
         }else{
@@ -62,10 +64,12 @@ public class TelaCandidatoCadastrar extends Fragment {
                 public void onClick(View v) {
                     String nome = binding.editTextNomeCandidato.getText().toString();
                     String partido = binding.editTextPartido.getText().toString();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("usuario", getArguments().getString("usuario"));
 
                     if(!nome.isEmpty() && !partido.isEmpty()){
                         db.candidatoDao().insert(new Candidato(nome,partido));
-                        Navigation.findNavController(v).navigate(R.id.telaCandidatosJornalista);
+                        Navigation.findNavController(v).navigate(R.id.telaCandidatosJornalista,bundle);
                     }else{
                         Snackbar.make(v, "Nome e Partido. Obrigatórios", Snackbar.LENGTH_SHORT)
                                 .setAction("Action", null)

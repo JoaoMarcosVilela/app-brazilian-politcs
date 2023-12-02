@@ -3,6 +3,7 @@ package com.example.app_brazilian_politcs.fragments.eleitor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.room.Room;
 
 import android.os.Handler;
@@ -43,6 +44,8 @@ public class TelaEleitor extends Fragment {
 
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
         binding.textViewUsuarioEleitor.setText(getArguments().getString("usuario"));
+
+        binding.btnSairEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.telaInicial));
 
 
         final Handler handler = new Handler();

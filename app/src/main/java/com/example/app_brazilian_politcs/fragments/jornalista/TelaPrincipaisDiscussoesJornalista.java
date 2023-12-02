@@ -41,10 +41,15 @@ public class TelaPrincipaisDiscussoesJornalista extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentTelaPrincipaisDiscussoesJornalistaBinding.inflate(inflater,container,false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
-
-        binding.btnCadastrarDiscussoes.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaPrincipaisDiscussoesJornalista_to_telaPrincipalDiscussaoCadastro,null));
+        Bundle bundle = new Bundle();
+        bundle.putString("usuario", getArguments().getString("usuario"));
+        binding.btnCadastrarDiscussoes.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaPrincipaisDiscussoesJornalista_to_telaPrincipalDiscussaoCadastro,bundle));
 
         listarDadosDoListView();
+
+
+
+        binding.toolbarTelaPrinciapaisDiscussoesJornalista.setNavigationOnClickListener(Navigation.createNavigateOnClickListener(R.id.telaJornalista, bundle));
 
         binding.listViewPrincipaisDiscussoes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -63,6 +68,7 @@ public class TelaPrincipaisDiscussoesJornalista extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("tituloDiscussao", discussao.getTituloDiscussao());
                 bundle.putString("discussao", discussao.getDiscussao());
+                bundle.putString("posissao", String.valueOf(position));
                 Navigation.findNavController(view).navigate(R.id.action_telaPrincipaisDiscussoesJornalista_to_telaPrincipalDiscussaoCadastro, bundle);
             }
         });

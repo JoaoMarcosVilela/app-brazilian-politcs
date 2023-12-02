@@ -31,6 +31,8 @@ public class TelaPerguntaCadastro extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentTelaPerguntaCadastroBinding.inflate(inflater,container,false);
 
+        binding.toolbarTelaPergunta.setNavigationOnClickListener(Navigation.createNavigateOnClickListener(R.id.telaInicial));
+
         binding.btnEleitor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
