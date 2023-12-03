@@ -69,6 +69,7 @@ public class TelaPrincipaisDiscussoesJornalista extends Fragment {
                 bundle.putString("tituloDiscussao", discussao.getTituloDiscussao());
                 bundle.putString("discussao", discussao.getDiscussao());
                 bundle.putString("posissao", String.valueOf(position));
+                bundle.putString("usuario", getArguments().getString("usuario"));
                 Navigation.findNavController(view).navigate(R.id.action_telaPrincipaisDiscussoesJornalista_to_telaPrincipalDiscussaoCadastro, bundle);
             }
         });

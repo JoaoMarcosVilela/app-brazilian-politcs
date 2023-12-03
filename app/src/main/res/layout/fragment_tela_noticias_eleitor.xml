@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6BECE4"
-    tools:context=".fragments.eleitor.TelaNoticiasEleitor" />
+    tools:context=".fragments.eleitor.TelaNoticiasEleitor">
+
+    <ListView
+        android:id="@+id/listViewNoticiasEleitor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarNoticiasEleitor" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarNoticiasEleitor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/silver"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back" />
+</androidx.constraintlayout.widget.ConstraintLayout>

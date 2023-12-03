@@ -44,7 +44,13 @@ public class TelaEleitor extends Fragment {
 
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
         binding.textViewUsuarioEleitor.setText(getArguments().getString("usuario"));
+        Bundle bundle = new Bundle();
+        bundle.putString("usuario",getArguments().getString("usuario"));
 
+
+        binding.btnNoticiasTelaEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaEleitor_to_telaNoticiasEleitor,bundle));
+        binding.btnCandidatosTelaEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaEleitor_to_telaCandidatosEleitor,bundle));
+        binding.btnDiscussoesEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaEleitor_to_telaPrincipaisDicussoesEleitor,bundle));
         binding.btnSairEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.telaInicial));
 
 

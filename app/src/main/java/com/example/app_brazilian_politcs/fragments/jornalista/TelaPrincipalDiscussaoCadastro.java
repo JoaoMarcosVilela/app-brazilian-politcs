@@ -35,6 +35,8 @@ public class TelaPrincipalDiscussaoCadastro extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentTelaPrincipalDiscussaoCadastroBinding.inflate(inflater,container,false);
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
+        Bundle bundle = new Bundle();
+        bundle.putString("usuario", getArguments().getString("usuario"));
 
         if(getArguments().getString("posissao") != null){
             String tituloDiscussao = getArguments().getString("tituloDiscussao");
@@ -52,8 +54,6 @@ public class TelaPrincipalDiscussaoCadastro extends Fragment {
                     discussao.setTituloDiscussao(novoTituloDiscusao);
                     discussao.setDiscussao(novaDiscussao);
                     db.discussaoDao().update(discussao);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("usuario", getArguments().getString("usuario"));
                     Navigation.findNavController(v).navigate(R.id.telaPrincipaisDiscussoesJornalista,bundle);
                 }
             });
@@ -63,8 +63,6 @@ public class TelaPrincipalDiscussaoCadastro extends Fragment {
                 public void onClick(View v) {
                     String titulo = binding.editTextTituloDiscussao.getText().toString();
                     String discussao = binding.editTextDiscussao.getText().toString();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("usuario",getArguments().getString("usuario"));
 
                     if(!titulo.isEmpty() && !discussao.isEmpty()){
                         db.discussaoDao().insert(new Discussao(titulo,discussao));

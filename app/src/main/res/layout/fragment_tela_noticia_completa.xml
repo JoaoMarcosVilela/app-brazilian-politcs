@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6BECE4"
-    tools:context=".fragments.eleitor.TelaNoticiaCompleta" />
+    android:orientation="vertical"
+    tools:context=".fragments.eleitor.TelaNoticiaCompleta" >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarNoticiaCompleta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/silver"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:navigationIcon="@drawable/back" />
+
+    <TextView
+        android:id="@+id/TituloNoticiaTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/subtituloNoticiaTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textoNoticiaTextView"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginTop="50dp"
+        android:text="TextView" />
+</LinearLayout>
