@@ -23,8 +23,8 @@ import java.util.List;
 
 
 public class TelaPrincipaisDicussoesEleitor extends Fragment {
-    FragmentTelaPrincipaisDicussoesEleitorBinding binding;
-    Database db;
+    private FragmentTelaPrincipaisDicussoesEleitorBinding binding;
+    private Database db;
 
     public TelaPrincipaisDicussoesEleitor() {
         // Required empty public constructor

@@ -17,8 +17,8 @@ import com.example.app_brazilian_politcs.models.Noticia;
 import com.google.android.material.snackbar.Snackbar;
 
 public class TelaNoticiaCadastro extends Fragment {
-    FragmentTelaNoticiaCadastroBinding binding;
-    Database db;
+    private FragmentTelaNoticiaCadastroBinding binding;
+    private Database db;
 
     public TelaNoticiaCadastro() {
         // Required empty public constructor

@@ -13,7 +13,7 @@ import com.example.app_brazilian_politcs.R;
 import com.example.app_brazilian_politcs.databinding.FragmentTelaInicialBinding;
 
 public class TelaInicial extends Fragment {
-    FragmentTelaInicialBinding binding;
+    private FragmentTelaInicialBinding binding;
 
     public TelaInicial() {
         // Required empty public constructor

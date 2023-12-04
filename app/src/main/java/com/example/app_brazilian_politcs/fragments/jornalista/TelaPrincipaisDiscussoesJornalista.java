@@ -23,8 +23,8 @@ import java.util.List;
 
 
 public class TelaPrincipaisDiscussoesJornalista extends Fragment {
-    FragmentTelaPrincipaisDiscussoesJornalistaBinding binding;
-    Database db;
+    private FragmentTelaPrincipaisDiscussoesJornalistaBinding binding;
+    private Database db;
 
     public TelaPrincipaisDiscussoesJornalista() {
         // Required empty public constructor
@@ -76,11 +76,11 @@ public class TelaPrincipaisDiscussoesJornalista extends Fragment {
 
         return binding.getRoot();
     }
-    public List<Discussao> pegarDadosBd(){
+    private List<Discussao> pegarDadosBd(){
         List<Discussao> discussoes;
         return discussoes = db.discussaoDao().getAll();
     }
-    public void listarDadosDoListView(){
+    private void listarDadosDoListView(){
         ArrayList<String> dados = new ArrayList<>();
         for(Discussao i: pegarDadosBd()){
             dados.add(i.toString());

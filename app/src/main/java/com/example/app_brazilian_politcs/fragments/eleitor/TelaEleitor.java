@@ -24,8 +24,8 @@ import java.util.Date;
 import java.util.List;
 
 public class TelaEleitor extends Fragment {
-    FragmentTelaEleitorBinding binding;
-    Database db;
+    private FragmentTelaEleitorBinding binding;
+    private Database db;
     private int i = 0;
 
     public TelaEleitor() {

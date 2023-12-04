@@ -16,8 +16,8 @@ import com.example.app_brazilian_politcs.databinding.FragmentTelaPrincipalDiscus
 
 
 public class TelaPrincipalDiscussaoEleitor extends Fragment {
-    FragmentTelaPrincipalDiscussaoEleitorBinding binding;
-    Database db;
+    private FragmentTelaPrincipalDiscussaoEleitorBinding binding;
+    private Database db;
 
     public TelaPrincipalDiscussaoEleitor() {
         // Required empty public constructor

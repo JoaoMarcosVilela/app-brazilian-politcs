@@ -15,8 +15,8 @@ import com.example.app_brazilian_politcs.database.Database;
 import com.example.app_brazilian_politcs.databinding.FragmentTelaCandidatoEleitorBinding;
 
 public class TelaCandidatoEleitor extends Fragment {
-    FragmentTelaCandidatoEleitorBinding binding;
-    Database db;
+    private FragmentTelaCandidatoEleitorBinding binding;
+    private Database db;
 
 
     public TelaCandidatoEleitor() {

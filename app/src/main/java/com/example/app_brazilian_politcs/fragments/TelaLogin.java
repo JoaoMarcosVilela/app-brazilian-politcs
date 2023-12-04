@@ -21,8 +21,8 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.List;
 
 public class TelaLogin extends Fragment {
-    FragmentTelaLoginBinding binding;
-    Database db;
+    private FragmentTelaLoginBinding binding;
+    private Database db;
     public TelaLogin() {
         // Required empty public constructor
     }

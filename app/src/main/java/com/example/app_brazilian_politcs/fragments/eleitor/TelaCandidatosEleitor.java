@@ -21,8 +21,8 @@ import java.util.List;
 
 
 public class TelaCandidatosEleitor extends Fragment {
-    FragmentTelaCandidatosEleitorBinding binding;
-    Database db;
+    private FragmentTelaCandidatosEleitorBinding binding;
+    private Database db;
 
     public TelaCandidatosEleitor() {
         // Required empty public constructor

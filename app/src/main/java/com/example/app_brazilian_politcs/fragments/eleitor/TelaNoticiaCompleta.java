@@ -16,8 +16,8 @@ import com.example.app_brazilian_politcs.databinding.FragmentTelaNoticiaCompleta
 
 
 public class TelaNoticiaCompleta extends Fragment {
-    FragmentTelaNoticiaCompletaBinding binding;
-    Database db;
+    private FragmentTelaNoticiaCompletaBinding binding;
+    private Database db;
 
     public TelaNoticiaCompleta() {
         // Required empty public constructor

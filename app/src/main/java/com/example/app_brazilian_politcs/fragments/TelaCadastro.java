@@ -18,8 +18,8 @@ import com.example.app_brazilian_politcs.models.Jornalista;
 import com.google.android.material.snackbar.Snackbar;
 
 public class TelaCadastro extends Fragment {
-    FragmentTelaCadastroBinding binding;
-    Database db;
+    private FragmentTelaCadastroBinding binding;
+    private Database db;
 
     public TelaCadastro() {
         // Required empty public constructor

@@ -13,7 +13,7 @@ import com.example.app_brazilian_politcs.R;
 import com.example.app_brazilian_politcs.databinding.FragmentTelaPerguntaCadastroBinding;
 
 public class TelaPerguntaCadastro extends Fragment {
-    FragmentTelaPerguntaCadastroBinding binding;
+    private FragmentTelaPerguntaCadastroBinding binding;
 
     public TelaPerguntaCadastro() {
         // Required empty public constructor

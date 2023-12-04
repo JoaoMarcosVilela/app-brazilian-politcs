@@ -21,8 +21,8 @@ import com.example.app_brazilian_politcs.adapters.NoticiaAdapter;
 import java.util.List;
 
 public class TelaNoticiasEleitor extends Fragment {
-    FragmentTelaNoticiasEleitorBinding binding;
-    Database db;
+    private FragmentTelaNoticiasEleitorBinding binding;
+    private Database db;
 
     public TelaNoticiasEleitor() {
         // Required empty public constructor
@@ -63,12 +63,12 @@ public class TelaNoticiasEleitor extends Fragment {
         return binding.getRoot();
     }
 
-    public List<Noticia> pegarDadosBd(){
+    private List<Noticia> pegarDadosBd(){
         List<Noticia> noticia;
         return noticia = db.noticiaDao().getAll();
     }
 
-    public void listarNoticiasDoListView(){
+    private void listarNoticiasDoListView(){
         NoticiaAdapter noticiaAdapter = new NoticiaAdapter(getContext(), pegarDadosBd());
         binding.listViewNoticiasEleitor.setAdapter(noticiaAdapter);
     }

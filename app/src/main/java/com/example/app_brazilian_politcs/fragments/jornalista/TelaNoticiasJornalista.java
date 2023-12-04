@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TelaNoticiasJornalista extends Fragment {
-    FragmentTelaNoticiasJornalistaBinding binding;
-    Database db;
+    private FragmentTelaNoticiasJornalistaBinding binding;
+    private Database db;
     public TelaNoticiasJornalista() {
         // Required empty public constructor
     }
@@ -75,11 +75,11 @@ public class TelaNoticiasJornalista extends Fragment {
         return binding.getRoot();
     }
 
-    public List<Noticia> pegarDadosNoBd(){
+    private List<Noticia> pegarDadosNoBd(){
         List<Noticia> noticia;
         return noticia = db.noticiaDao().getAll();
     }
-    public void listarDadosDoListView(){
+    private void listarDadosDoListView(){
         ArrayList<String> dados = new ArrayList<>();
         for(Noticia i: pegarDadosNoBd()){
             dados.add(i.toString());

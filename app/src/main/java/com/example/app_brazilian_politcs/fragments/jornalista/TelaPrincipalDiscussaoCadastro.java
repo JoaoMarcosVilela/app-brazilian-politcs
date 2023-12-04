@@ -17,8 +17,8 @@ import com.example.app_brazilian_politcs.models.Discussao;
 import com.google.android.material.snackbar.Snackbar;
 
 public class TelaPrincipalDiscussaoCadastro extends Fragment {
-    FragmentTelaPrincipalDiscussaoCadastroBinding binding;
-    Database db;
+    private FragmentTelaPrincipalDiscussaoCadastroBinding binding;
+    private Database db;
     public TelaPrincipalDiscussaoCadastro() {
         // Required empty public constructor
     }

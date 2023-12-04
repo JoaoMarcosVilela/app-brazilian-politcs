@@ -20,8 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TelaJornalista extends Fragment {
-    FragmentTelaJornalistaBinding binding;
-    Database db;
+    private FragmentTelaJornalistaBinding binding;
+    private Database db;
 
     public TelaJornalista() {
         // Required empty public constructor

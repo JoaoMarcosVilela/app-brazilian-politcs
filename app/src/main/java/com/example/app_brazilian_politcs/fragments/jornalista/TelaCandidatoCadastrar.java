@@ -18,8 +18,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 
 public class TelaCandidatoCadastrar extends Fragment {
-    FragmentTelaCandidatoCadastrarBinding binding;
-    Database db;
+    private FragmentTelaCandidatoCadastrarBinding binding;
+    private Database db;
     public TelaCandidatoCadastrar() {
         // Required empty public constructor
     }
