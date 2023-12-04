@@ -38,6 +38,9 @@ public class TelaPrincipalDiscussaoEleitor extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("usuario", getArguments().getString("usuario"));
 
+        binding.tituloDiscussaoEleitorTextView.setText(getArguments().getString("tituloDiscussao"));
+        binding.corpoDiscussaoTextView.setText(getArguments().getString("discussao"));
+
         binding.toolbarDiscussaoEleitor.setNavigationOnClickListener(Navigation.createNavigateOnClickListener(R.id.telaPrincipaisDicussoesEleitor, bundle));
 
         return binding.getRoot();

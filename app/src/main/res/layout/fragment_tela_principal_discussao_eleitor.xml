@@ -18,4 +18,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/back" />
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="593dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDiscussaoEleitor">
+
+        <TextView
+            android:id="@+id/tituloDiscussaoEleitorTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/corpoDiscussaoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

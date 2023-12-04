@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="partidos_array">
+        <item>Agir - 36</item>
+        <item>Avante - 70</item>
+        <item>Cidadania - 23</item>
+        <item>DC - 27</item>
+        <item>MDB - 15</item>
+        <item>NOVO - 30</item>
+        <item>PCB - 21</item>
+        <item>PCdoB - 65</item>
+        <item>PCO - 29</item>
+        <item>PDT - 12</item>
+        <item>PL - 22</item>
+        <item>PMB - 35</item>
+        <item>PMN - 33</item>
+        <item>PODE - 19</item>
+        <item>PP - 11</item>
+        <item>PRD - 25</item>
+        <item>PRTB - 28</item>
+        <item>PSB - 40</item>
+        <item>PSD - 55</item>
+        <item>PSDB - 45</item>
+        <item>PSOL - 50</item>
+        <item>PSTU - 16</item>
+        <item>PT - 13</item>
+        <item>PV - 43</item>
+        <item>REDE - 18</item>
+        <item>Republicanos - 10</item>
+        <item>Solidariedade - 77</item>
+        <item>UNIÃO - 44</item>
+        <item>UP - 80</item>
+    </string-array>
+
+</resources>

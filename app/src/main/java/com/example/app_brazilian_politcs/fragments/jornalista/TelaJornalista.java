@@ -53,10 +53,29 @@ public class TelaJornalista extends Fragment {
                 Date dataHoraAtual = new Date();
                 String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
                 binding.textViewHoraJornalista.setText(hora);
+
+                int horaAtual = Integer.parseInt(new SimpleDateFormat("HH").format(dataHoraAtual));
+                String cumprimento = realizarVerificacoes(horaAtual);
+                binding.textViewHorarioJornalista.setText(cumprimento);
+
                 handler.postDelayed(this, 10*100);
             }
         });
 
         return binding.getRoot();
     }
+
+    private String realizarVerificacoes(int horaAtual) {
+        if (horaAtual >= 5 && horaAtual < 12) {
+            binding.imageViewHorarioJornalista.setImageResource(R.drawable.bom_dia);
+            return "Bom dia";
+        } else if (horaAtual >= 12 && horaAtual < 18) {
+            binding.imageViewHorarioJornalista.setImageResource(R.drawable.boa_tarde);
+            return "Boa tarde";
+        } else {
+            binding.imageViewHorarioJornalista.setImageResource(R.drawable.boa_noite);
+            return "Boa noite";
+        }
+    }
+
 }

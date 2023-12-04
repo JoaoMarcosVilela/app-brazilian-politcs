@@ -8,7 +8,7 @@
     tools:context=".fragments.eleitor.TelaEleitor" >
 
     <ImageView
-        android:id="@+id/imageViewHorario"
+        android:id="@+id/imageViewHorarioEleitor"
         android:layout_width="110dp"
         android:layout_height="90dp"
         android:layout_marginStart="150dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewHorario"
+        android:id="@+id/textViewHorarioEleitor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="155dp"
@@ -31,7 +31,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewHorario" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHorarioEleitor" />
 
     <TextView
         android:id="@+id/textViewUsuarioEleitor"
@@ -45,7 +45,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHorario" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewHorarioEleitor" />
 
     <Button
         android:id="@+id/btnNoticiasTelaEleitor"

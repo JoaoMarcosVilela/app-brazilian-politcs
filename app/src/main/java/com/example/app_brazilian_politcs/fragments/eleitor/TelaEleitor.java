@@ -40,17 +40,17 @@ public class TelaEleitor extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentTelaEleitorBinding.inflate(inflater,container,false);
+        binding = FragmentTelaEleitorBinding.inflate(inflater, container, false);
 
         db = Room.databaseBuilder(requireContext(), Database.class, "EducaPol").allowMainThreadQueries().build();
         binding.textViewUsuarioEleitor.setText(getArguments().getString("usuario"));
         Bundle bundle = new Bundle();
-        bundle.putString("usuario",getArguments().getString("usuario"));
+        bundle.putString("usuario", getArguments().getString("usuario"));
 
 
-        binding.btnNoticiasTelaEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaEleitor_to_telaNoticiasEleitor,bundle));
-        binding.btnCandidatosTelaEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaEleitor_to_telaCandidatosEleitor,bundle));
-        binding.btnDiscussoesEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaEleitor_to_telaPrincipaisDicussoesEleitor,bundle));
+        binding.btnNoticiasTelaEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaEleitor_to_telaNoticiasEleitor, bundle));
+        binding.btnCandidatosTelaEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaEleitor_to_telaCandidatosEleitor, bundle));
+        binding.btnDiscussoesEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_telaEleitor_to_telaPrincipaisDicussoesEleitor, bundle));
         binding.btnSairEleitor.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.telaInicial));
 
 
@@ -60,11 +60,31 @@ public class TelaEleitor extends Fragment {
                 Date dataHoraAtual = new Date();
                 String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
                 binding.textViewHoraEleitor.setText(hora);
-                handler.postDelayed(this, 10*100);
+
+                int horaAtual = Integer.parseInt(new SimpleDateFormat("HH").format(dataHoraAtual));
+                String cumprimento = realizarVerificacoes(horaAtual);
+                binding.textViewHorarioEleitor.setText(cumprimento);
+
+
+                handler.postDelayed(this, 10 * 100);
             }
         });
 
+
         return binding.getRoot();
 
+    }
+
+    private String realizarVerificacoes(int horaAtual) {
+        if (horaAtual >= 5 && horaAtual < 12) {
+            binding.imageViewHorarioEleitor.setImageResource(R.drawable.bom_dia);
+            return "Bom dia";
+        } else if (horaAtual >= 12 && horaAtual < 18) {
+            binding.imageViewHorarioEleitor.setImageResource(R.drawable.boa_tarde);
+            return "Boa tarde";
+        } else {
+            binding.imageViewHorarioEleitor.setImageResource(R.drawable.boa_noite);
+            return "Boa noite";
+        }
     }
 }
